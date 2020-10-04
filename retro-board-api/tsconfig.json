@@ -8,6 +8,8 @@
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "paths": {
       "*": ["node_modules/*"]
     }
