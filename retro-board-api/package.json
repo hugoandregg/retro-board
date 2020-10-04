@@ -1,8 +1,16 @@
 {
   "main": "src/index.js",
   "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "prestart": "yarn migration:run",
     "start": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:create": "yarn typeorm migration:create -n",
+    "premigration:run": "yarn clean && yarn build",
+    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
+    "premigration:revert": "yarn clean && yarn build",
+    "migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert"
   },
   "dependencies": {
     "express": "^4.17.1",
