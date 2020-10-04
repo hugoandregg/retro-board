@@ -1,5 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { IsNotEmpty } from "class-validator";
+
+import { BoardColumn } from "./BoardColumn";
 
 @Entity()
 export class Task {
@@ -9,4 +11,7 @@ export class Task {
   @Column()
   @IsNotEmpty()
   content: string;
+
+  @ManyToOne(() => BoardColumn, (column) => column.tasks)
+  columnId: number;
 }
