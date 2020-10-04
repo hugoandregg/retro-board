@@ -1,14 +1,9 @@
-import express, { Request, Response } from "express";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 
-const app = express();
+import app from "./app";
 
 const PORT = 8080;
-
-app.get("/", (request: Request, response: Response) => {
-  response.send("Hello world!");
-});
 
 createConnection()
   .then(() => {
