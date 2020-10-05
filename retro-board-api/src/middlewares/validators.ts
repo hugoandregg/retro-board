@@ -1,5 +1,6 @@
 import { validate } from "class-validator";
 import { Request, Response, NextFunction } from "express";
+import { getRepository } from "typeorm";
 
 import Task from "../entities/Task";
 import BoardColumn from "../entities/BoardColumn";
@@ -35,9 +36,12 @@ const Validators = {
       return;
     }
 
-    await BoardColumn.findOneOrFail({ id: columnId }).catch(() => {
+    const referencedColumn = await getRepository(BoardColumn).findOne(columnId);
+
+    if (referencedColumn === undefined) {
       response.status(400).send(`Column with id "${columnId}" does not exist!`);
-    });
+      return;
+    }
 
     next();
   },

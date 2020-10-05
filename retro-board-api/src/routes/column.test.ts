@@ -1,29 +1,11 @@
 import request from "supertest";
-import * as typeorm from "typeorm";
-import { createConnection } from "typeorm";
+
+import { databaseTest } from "../utilities/testUtilities";
 
 import app from "../app";
-import BoardColumn from "../entities/BoardColumn";
-import Task from "../entities/Task";
-
-export const asMock = (obj: any): jest.Mock => obj as jest.Mock;
 
 describe("Column Router", () => {
-  beforeEach(() => {
-    return createConnection({
-      type: "sqlite",
-      database: ":memory:",
-      dropSchema: true,
-      entities: [BoardColumn, Task],
-      synchronize: true,
-      logging: false,
-    });
-  });
-
-  afterEach(() => {
-    let conn = typeorm.getConnection();
-    return conn.close();
-  });
+  databaseTest();
   describe("POST /column", () => {
     it("should respond with 200 when there is no problem to create entity", (done) => {
       request(app)
