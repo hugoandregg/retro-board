@@ -1,10 +1,10 @@
-import { Task } from "../entities/Task";
 import request from "supertest";
 import * as typeorm from "typeorm";
 import { createConnection } from "typeorm";
 
 import app from "../app";
 import BoardColumn from "../entities/BoardColumn";
+import Task from "../entities/Task";
 
 export const asMock = (obj: any): jest.Mock => obj as jest.Mock;
 
