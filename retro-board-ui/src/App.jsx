@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "@atlaskit/css-reset";
-import Column from "./components/column";
+import Column from "./components/Column/Column";
 import { DragDropContext } from "react-beautiful-dnd";
 import initialData from "./initial-data";
 import styled from "styled-components";
