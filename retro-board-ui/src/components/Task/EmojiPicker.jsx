@@ -15,6 +15,11 @@ const EmojiPicker = (props) => {
         setAnchorEl(null);
     };
 
+    const handleSelection = (event) => {
+        props.onEmojiSelect(event)
+        handleClose()
+    };
+
     const open = Boolean(anchorEl);
     const id = open ? "emoji-popover" : undefined;
 
@@ -44,7 +49,7 @@ const EmojiPicker = (props) => {
                 horizontal: "center",
             }}
         >
-            <Picker onSelect={props.onEmojiSelect} />
+            <Picker onSelect={handleSelection} />
         </Popover>
     </div>
 }
