@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import { IsNotEmpty } from "class-validator";
 
-import { Task } from "./Task";
+import Task from "./Task";
 
 @Entity()
 class BoardColumn extends BaseEntity {

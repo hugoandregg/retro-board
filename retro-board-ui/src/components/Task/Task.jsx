@@ -1,26 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import { Grid, IconButton, Popover, Chip } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker, Emoji } from "emoji-mart";
 
-const Container = styled.div`
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: ${(props) => (props.isDragging ? "lightgreen" : "white")};
-`;
-
-const ReactionContainer = styled.div`
-  margin-right: 4px;
-`;
+import {Container, ReactionContainer} from './Task.styled'
 
 const Task = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedEmojis, setSelectedEmojis] = React.useState([]);
+  const [reactions, setReactions] = React.useState(0);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,8 +20,19 @@ const Task = (props) => {
     setAnchorEl(null);
   };
 
+  const handleReactionIncrease = (emoji) => {
+    emoji.reactions++;
+    setReactions(reactions + 1);
+  }
+
   const handleEmojiSelect = (emoji) => {
-    setSelectedEmojis([...selectedEmojis, emoji]);
+    const currentEmoji = selectedEmojis.find(e => e.id === emoji.id);
+    if (currentEmoji) {
+      handleReactionIncrease(currentEmoji);
+    } else {
+      emoji.reactions = 1;
+      setSelectedEmojis([...selectedEmojis, emoji]);
+    }
   };
 
   const open = Boolean(anchorEl);
@@ -71,8 +72,9 @@ const Task = (props) => {
                       variant="outlined"
                       size="small"
                       aria-label={emoji.name}
-                      label="1"
+                      label={emoji.reactions}
                       avatar={<Emoji key="asd" emoji={emoji} size={18} />}
+                      onClick={() => handleReactionIncrease(emoji)}
                     />
                   </ReactionContainer>
                 );
