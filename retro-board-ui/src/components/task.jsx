@@ -18,6 +18,11 @@ const ReactionContainer = styled.div`
   margin-right: 4px;
 `;
 
+const ChipStyled = styled(Chip)`
+  background-color: red;
+  padding: 20px;
+`
+
 const Task = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedEmojis, setSelectedEmojis] = React.useState([]);
@@ -78,7 +83,7 @@ const Task = (props) => {
               {selectedEmojis.map((emoji, index) => {
                 return (
                   <ReactionContainer>
-                    <Chip
+                    <ChipStyled
                       key={`emoji-reaction-${index}`}
                       variant="outlined"
                       size="small"
