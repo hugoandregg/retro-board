@@ -10,8 +10,24 @@ This is a project with the intention to create a retrospective board where peopl
 
 ## Setup and how to run
 
+Starting the client:
+
 ```
-$ git clone https://github.com/hugoandregg/retro-board
 $ cd retro-board/retro-board-ui
 $ yarn && yarn start
 ```
+
+Starting the server:
+
+```
+$ docker-compose up // start postgres instance
+$ cd retro-board/retro-board-api
+$ yarn && yarn start
+```
+
+## How to contribute
+
+1. Pick an issue that's not assigned to anyone and ask to work on it, so you'll be assigned.
+2. Make sure to add tests whenever it's possible.
+3. Use this commit pattern: `[#ISSUE_NUMBER] Your commit message`, example: `[#7] Add docker-compose to start postgres`
+4. Have fun! :)
