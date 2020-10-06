@@ -21,6 +21,7 @@ const ReactionContainer = styled.div`
 const Task = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedEmojis, setSelectedEmojis] = React.useState([]);
+  const [reactions, setReactions] = React.useState(0);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,8 +31,19 @@ const Task = (props) => {
     setAnchorEl(null);
   };
 
+  const handleReactionIncrease = (emoji) => {
+    emoji.reactions++;
+    setReactions(reactions + 1);
+  }
+
   const handleEmojiSelect = (emoji) => {
-    setSelectedEmojis([...selectedEmojis, emoji]);
+    const currentEmoji = selectedEmojis.find(e => e.id === emoji.id);
+    if (currentEmoji) {
+      handleReactionIncrease(currentEmoji);
+    } else {
+      emoji.reactions = 1;
+      setSelectedEmojis([...selectedEmojis, emoji]);
+    }
   };
 
   const open = Boolean(anchorEl);
@@ -71,8 +83,9 @@ const Task = (props) => {
                       variant="outlined"
                       size="small"
                       aria-label={emoji.name}
-                      label="1"
+                      label={emoji.reactions}
                       avatar={<Emoji key="asd" emoji={emoji} size={18} />}
+                      onClick={() => handleReactionIncrease(emoji)}
                     />
                   </ReactionContainer>
                 );
