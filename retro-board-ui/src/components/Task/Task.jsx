@@ -1,27 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import { Grid, IconButton, Popover, Chip } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker, Emoji } from "emoji-mart";
 
-const Container = styled.div`
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: ${(props) => (props.isDragging ? "lightgreen" : "white")};
-`;
-
-const ReactionContainer = styled.div`
-  margin-right: 4px;
-`;
-
-const ChipStyled = styled(Chip)`
-  background-color: red;
-  padding: 20px;
-`
+import {Container, ReactionContainer} from './Task.styled'
 
 const Task = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -83,7 +67,7 @@ const Task = (props) => {
               {selectedEmojis.map((emoji, index) => {
                 return (
                   <ReactionContainer>
-                    <ChipStyled
+                    <Chip
                       key={`emoji-reaction-${index}`}
                       variant="outlined"
                       size="small"
