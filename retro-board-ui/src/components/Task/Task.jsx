@@ -1,24 +1,14 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { Grid, IconButton, Popover, Chip } from "@material-ui/core";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import "emoji-mart/css/emoji-mart.css";
-import { Picker, Emoji } from "emoji-mart";
+import { Grid, Chip } from "@material-ui/core";
+import { Emoji } from "emoji-mart";
+import EmojiPicker from "./EmojiPicker"
 
 import {Container, ReactionContainer} from './Task.styled'
 
 const Task = (props) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedEmojis, setSelectedEmojis] = React.useState([]);
   const [reactions, setReactions] = React.useState(0);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleReactionIncrease = (emoji) => {
     emoji.reactions++;
@@ -35,9 +25,6 @@ const Task = (props) => {
     }
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
   return (
     <Draggable draggableId={props.task.id} index={props.index}>
       {(provided, snapshot) => (
@@ -52,23 +39,13 @@ const Task = (props) => {
               {props.task.content}
             </Grid>
             <Grid container justify="flex-end" item xs={1} md={1}>
-              <IconButton
-                aria-describedby={id}
-                aria-label="delete"
-                style={{ align: "right" }}
-                size="small"
-                variant="outlined"
-                onClick={handleClick}
-              >
-                <InsertEmoticonIcon />
-              </IconButton>
+              <EmojiPicker onEmojiSelect={handleEmojiSelect} />
             </Grid>
             <Grid container item alignItems="center">
               {selectedEmojis.map((emoji, index) => {
                 return (
-                  <ReactionContainer>
+                  <ReactionContainer key={`emoji-reaction-${index}`}>
                     <Chip
-                      key={`emoji-reaction-${index}`}
                       variant="outlined"
                       size="small"
                       aria-label={emoji.name}
@@ -81,23 +58,6 @@ const Task = (props) => {
               })}
             </Grid>
           </Grid>
-          <Popover
-            ref={React.createRef()}
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
-          >
-            <Picker onSelect={handleEmojiSelect} />
-          </Popover>
         </Container>
       )}
     </Draggable>
