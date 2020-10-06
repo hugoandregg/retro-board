@@ -1,10 +1,16 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { IsNotEmpty } from "class-validator";
 
 import BoardColumn from "./BoardColumn";
 
 @Entity()
-export class Task {
+class Task extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
@@ -13,5 +19,15 @@ export class Task {
   content: string;
 
   @ManyToOne(() => BoardColumn, (column) => column.tasks)
-  columnId: number;
+  @IsNotEmpty()
+  column: number;
+
+  constructor({ content, column }: Partial<Task> = {}) {
+    super();
+
+    this.content = content;
+    this.column = column;
+  }
 }
+
+export default Task;

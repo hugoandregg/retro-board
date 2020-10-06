@@ -1,27 +1,28 @@
 import React from "react";
-import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import { Grid, Chip } from "@material-ui/core";
 import { Emoji } from "emoji-mart";
-import EmojiPicker from "./emojipicker"
+import EmojiPicker from "./EmojiPicker"
 
-const Container = styled.div`
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: ${(props) => (props.isDragging ? "lightgreen" : "white")};
-`;
-
-const ReactionContainer = styled.div`
-  margin-right: 4px;
-`;
+import {Container, ReactionContainer} from './Task.styled'
 
 const Task = (props) => {
   const [selectedEmojis, setSelectedEmojis] = React.useState([]);
+  const [reactions, setReactions] = React.useState(0);
+
+  const handleReactionIncrease = (emoji) => {
+    emoji.reactions++;
+    setReactions(reactions + 1);
+  }
 
   const handleEmojiSelect = (emoji) => {
-    setSelectedEmojis([...selectedEmojis, emoji]);
+    const currentEmoji = selectedEmojis.find(e => e.id === emoji.id);
+    if (currentEmoji) {
+      handleReactionIncrease(currentEmoji);
+    } else {
+      emoji.reactions = 1;
+      setSelectedEmojis([...selectedEmojis, emoji]);
+    }
   };
 
   return (
@@ -43,14 +44,14 @@ const Task = (props) => {
             <Grid container item alignItems="center">
               {selectedEmojis.map((emoji, index) => {
                 return (
-                  <ReactionContainer>
+                  <ReactionContainer key={`emoji-reaction-${index}`}>
                     <Chip
-                      key={`emoji-reaction-${index}`}
                       variant="outlined"
                       size="small"
                       aria-label={emoji.name}
-                      label="1"
+                      label={emoji.reactions}
                       avatar={<Emoji key="asd" emoji={emoji} size={18} />}
+                      onClick={() => handleReactionIncrease(emoji)}
                     />
                   </ReactionContainer>
                 );
