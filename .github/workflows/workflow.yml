@@ -3,8 +3,6 @@
 on:
     push:
         branches: [feature/create-workflow]
-        paths:
-            - 'retro-board-ui/**'
 
     defaults:
         run:
