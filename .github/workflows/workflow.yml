@@ -12,19 +12,19 @@ on:
   
   jobs:
     build-and-deploy:
-      runs-on: ubuntu-latest
+        runs-on: ubuntu-latest
   
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
   
-        - name: Install dependencies
-          run: yarn install
+            - name: Install dependencies
+              run: yarn install
   
-        - name: Deploy to gh-pages
-          uses: JamesIves/github-pages-deploy-action@3.5.9
-          with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            BRANCH: gh-pages # The branch the action should deploy to.
-            FOLDER: build # The folder the action should deploy.
+            - name: Deploy to gh-pages
+              uses: JamesIves/github-pages-deploy-action@3.5.9
+              with:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                BRANCH: gh-pages # The branch the action should deploy to.
+                FOLDER: build # The folder the action should deploy.
   
