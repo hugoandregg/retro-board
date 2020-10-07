@@ -18,9 +18,10 @@ jobs:
 
       - name: Build project
         run: yarn build
+        working-directory: ./retro-board-ui
 
       - name: deploy gh-pages
-        uses: ./retro-board-ui
+        working-directory: ./retro-board-ui
         with:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
