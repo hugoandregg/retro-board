@@ -2,7 +2,7 @@ name: Testing Workflow
 
 on:
   push:
-    branches: [main]
+    branches: [feature/create-workflow]
 
 jobs:
   build-and-deploy:
