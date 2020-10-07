@@ -3,10 +3,6 @@
 on:
     push:
         branches: [feature/create-workflow]
-
-    defaults:
-        run:
-            working-directory: retro-board-ui
   
   jobs:
     build-and-deploy:
@@ -15,11 +11,14 @@ on:
         steps:
             - name: Checkout
                 uses: actions/checkout@v2
+                working-directory: retro-board-ui
   
             - name: Install dependencies
                 run: yarn install
+                working-directory: retro-board-ui
   
             - name: Deploy to gh-pages
+                working-directory: retro-board-ui
                 uses: JamesIves/github-pages-deploy-action@3.5.9
                 with:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
