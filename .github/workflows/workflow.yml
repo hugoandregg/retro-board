@@ -16,9 +16,9 @@ jobs:
         run: yarn install
         working-directory: ./retro-board-ui
 
-      - name: Deploy to gh-pages
-        uses: JamesIves/github-pages-deploy-action@3.5.9
+      - name: deploy docs
+        uses: ./retro-board-ui
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          remote_url: https://github.com/appleboy/gh-pages-action.git
