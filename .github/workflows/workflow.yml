@@ -16,9 +16,13 @@ jobs:
         run: yarn install
         working-directory: ./retro-board-ui
 
+      - name: Build project
+        run: yarn build
+
       - name: deploy gh-pages
         uses: ./retro-board-ui
         with:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          pages_directory: ./retro-board-ui/build
           remote_url: https://github.com/appleboy/gh-pages-action.git
