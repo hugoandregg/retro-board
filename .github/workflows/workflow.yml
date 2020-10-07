@@ -17,7 +17,6 @@ jobs:
         working-directory: ./retro-board-ui
 
       - name: Deploy to gh-pages
-        working-directory: ./retro-board-ui
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
