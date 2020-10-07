@@ -3,7 +3,6 @@
 on:
     push:
         branches: [feature/create-workflow]
-  
   jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
