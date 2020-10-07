@@ -24,7 +24,6 @@ jobs:
         uses: ./
         with:
           target_directory: ./retro-board-ui
-
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           pages_directory: ./retro-board-ui/build
