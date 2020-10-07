@@ -16,7 +16,7 @@ jobs:
         run: yarn install
         working-directory: ./retro-board-ui
 
-      - name: deploy docs
+      - name: deploy gh-pages
         uses: ./retro-board-ui
         with:
           username: ${{ secrets.USERNAME }}
