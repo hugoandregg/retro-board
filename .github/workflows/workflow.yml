@@ -22,8 +22,9 @@ jobs:
 
       - name: deploy gh-pages
         uses: ./
-        working-directory: ./retro-board-ui
         with:
+          target_directory: ./retro-board-ui
+
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           pages_directory: ./retro-board-ui/build
