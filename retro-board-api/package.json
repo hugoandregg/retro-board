@@ -6,6 +6,7 @@
     "prestart": "yarn migration:run",
     "start": "ts-node src/index.ts",
     "test": "yarn jest --watch",
+    "test:nowatch": "yarn jest --watchAll=false",
     "migration:create": "yarn typeorm migration:create -n",
     "premigration:run": "yarn clean && yarn build",
     "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
