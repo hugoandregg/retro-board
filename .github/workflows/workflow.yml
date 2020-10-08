@@ -26,4 +26,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: retro-board-ui/build # The folder the action should deploy.
-          TARGET_FOLDER: ./
