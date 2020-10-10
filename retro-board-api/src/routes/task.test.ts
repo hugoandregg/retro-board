@@ -17,7 +17,7 @@ describe("Column Router", () => {
       request(app)
         .post("/task")
         .send({ content: "First issue", columnId })
-        .expect(200, done);
+        .expect(400, done);
     });
 
     it("should respond with 400 when content is empty", async (done) => {
