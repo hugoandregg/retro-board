@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.post("/", Validators.validateColumn, ColumnController.add);
 router.get("/", ColumnController.getAll)
+router.get("/:uuid", Validators.validateUUID, ColumnController.get)
 
 export default router;

@@ -17,7 +17,15 @@ const ColumnController = {
   getAll: async (request: Request, response: Response) => {
     const allColumns = await getRepository(BoardColumn).find()
     response.status(200).json(allColumns)
+  },
+
+  get: async (request: Request, response: Response) => {
+    const uuid = request.params.uuid;
+    const column = await getRepository(BoardColumn).find({ where: { id: uuid } })
+    if (column.length > 0) return response.status(200).json(column)
+    return response.status(404).json({ message: "Column Not Found" })
   }
+
 };
 
 export default ColumnController;
