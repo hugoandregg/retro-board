@@ -13,6 +13,11 @@ const ColumnController = {
 
     response.status(200).json(newColumn);
   },
+
+  getAll: async (request: Request, response: Response) => {
+    const allColumns = await getRepository(BoardColumn).find()
+    response.status(200).json(allColumns)
+  }
 };
 
 export default ColumnController;
