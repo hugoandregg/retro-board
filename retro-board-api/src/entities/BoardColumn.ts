@@ -18,7 +18,7 @@ class BoardColumn extends BaseEntity {
   @IsNotEmpty()
   title: string;
 
-  @OneToMany((type) => Task, (task) => task.id)
+  @OneToMany((type) => Task, (task) => task.column)
   tasks: Array<Task>;
 
   constructor(title?: string) {
