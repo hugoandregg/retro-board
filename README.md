@@ -10,18 +10,30 @@ This is a project with the intention to create a retrospective board where peopl
 
 ## Setup and how to run
 
-Starting the client:
+First, open your cloned directory, the default directory name is `retro-board` (if you have not renamed), access it.
+
+Within this directory we will find two directories, where is our frontend (`retro-board-ui`) and our API (`retro-board-api`).
+
+### Starting the client:
 
 ```shell
-$ cd retro-board/retro-board-ui
+$ cd retro-board-ui
 $ yarn && yarn start
 ```
 
-Starting the server:
+### Starting the server:
+
+Start **postgres** instance:
+
+**Note:** You need to keep this terminal window/tab opened
 
 ```shell
-$ docker-compose up # start postgres instance
-$ cd retro-board/retro-board-api
+$ docker-compose up 
+```
+Running our API:
+
+```shell
+$ cd retro-board-api
 $ yarn && yarn start
 ```
 
