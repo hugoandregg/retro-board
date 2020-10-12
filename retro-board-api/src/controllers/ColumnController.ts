@@ -13,6 +13,24 @@ const ColumnController = {
 
     response.status(200).json(newColumn);
   },
+
+  getAll: async (request: Request, response: Response) => {
+    // with tasks or not
+    const { withTask } = request.query;
+    const options = withTask === "true"
+      ? { relations: ["tasks"] } : {};
+
+    const columns = await getRepository(BoardColumn).find(options);
+    response.status(200).json(columns);
+  },
+
+  getTasks: async (request: Request, response: Response) => {
+    const uuid = request.params.uuid;
+    const column = await getRepository(BoardColumn).findOne({ where: { id: uuid }, relations: ["tasks"] } );
+    if (!column) return response.status(404).json({ message: "Column Not Found" });
+    return response.status(200).json(column.tasks);
+  }
+
 };
 
 export default ColumnController;
