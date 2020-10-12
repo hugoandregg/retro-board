@@ -12,15 +12,15 @@ This is a project with the intention to create a retrospective board where peopl
 
 Starting the client:
 
-```
+```shell
 $ cd retro-board/retro-board-ui
 $ yarn && yarn start
 ```
 
 Starting the server:
 
-```
-$ docker-compose up // start postgres instance
+```shell
+$ docker-compose up # start postgres instance
 $ cd retro-board/retro-board-api
 $ yarn && yarn start
 ```
