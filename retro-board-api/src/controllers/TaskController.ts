@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-
 import Task from "../entities/Task";
 
 const ColumnController = {
@@ -12,6 +11,11 @@ const ColumnController = {
     );
 
     response.status(200).json(newTask);
+  },
+
+  getAll: async (request: Request, response: Response) => {
+    const tasks = await getRepository(Task).find({});
+    response.status(200).json(tasks);
   },
 };
 
