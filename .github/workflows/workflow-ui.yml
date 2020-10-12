@@ -1,8 +1,12 @@
 name: UI Workflow
 
 on:
-  [push, pull_request]
-    branches: [main]
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
