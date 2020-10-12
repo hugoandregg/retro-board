@@ -2,7 +2,7 @@ name: UI Workflow
 
 on:
   push:
-    branches: [feature/create-workflow]
+    branches: [main]
 
 jobs:
   build-and-deploy:
