@@ -1,0 +1,28 @@
+name: UI Workflow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./retro-board-ui
+
+      - name: Build project
+        run: yarn build
+        working-directory: ./retro-board-ui
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: retro-board-ui/build # The folder the action should deploy.
