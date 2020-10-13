@@ -1,7 +1,7 @@
 import React from "react";
-import {Container, Title, TaskList} from './Column.styled'
-import Task from "../Task/Task";
 import { Droppable } from "react-beautiful-dnd";
+import Task from "../Task/Task";
+import { Container, TaskList, Title } from './Column.styled';
 
 const Column = (props) => {
   return (
