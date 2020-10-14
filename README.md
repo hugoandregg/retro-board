@@ -37,6 +37,13 @@ $ cd retro-board-api
 $ yarn && yarn start
 ```
 
+Seed DB:
+
+```shell
+yarn premigration:run
+yarn seed:run
+```
+
 ## How to contribute
 
 1. Pick an issue that's not assigned to anyone and ask to work on it, so you'll be assigned.

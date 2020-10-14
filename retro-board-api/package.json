@@ -7,11 +7,14 @@
     "start": "ts-node src/index.ts",
     "test": "yarn jest --watch",
     "test:nowatch": "yarn jest --watchAll=false",
-    "migration:create": "yarn typeorm migration:create -n",
+    "migration:create": "yarn typeorm migration:create -c default -n",
     "premigration:run": "yarn clean && yarn build",
-    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run -c default",
     "premigration:revert": "yarn clean && yarn build",
-    "migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert"
+    "migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert -c default",
+    "seed:generate": "ts-node ./node_modules/.bin/typeorm migration:generate -c seed -n ",
+    "seed:run": "ts-node ./node_modules/.bin/typeorm migration:run -c seed",
+    "seed:revert": "ts-node ./node_modules/.bin/typeorm migration:revert -c seed"
   },
   "dependencies": {
     "cors": "^2.8.5",

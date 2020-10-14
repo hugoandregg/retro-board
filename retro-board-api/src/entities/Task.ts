@@ -12,7 +12,7 @@ import BoardColumn from "./BoardColumn";
 @Entity()
 class Task extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column()
   @IsNotEmpty()
@@ -20,7 +20,7 @@ class Task extends BaseEntity {
 
   @ManyToOne(() => BoardColumn, (column) => column.tasks)
   @IsNotEmpty()
-  column: number;
+  column: string;
 
   constructor({ content, column }: Partial<Task> = {}) {
     super();
