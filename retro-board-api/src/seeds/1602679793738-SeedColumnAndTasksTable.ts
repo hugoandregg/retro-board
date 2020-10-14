@@ -11,7 +11,7 @@ export class SeedColumn1602679793738 implements MigrationInterface {
         );
         TaskSeed.map(async task => {
             const newTask = await getRepository("task","seed").save(
-                new Task({ column: (task.columnId), content:task.content }) // column is expecting number?
+                new Task({ column: task.columnId, content:task.content })
               );
         })
     }

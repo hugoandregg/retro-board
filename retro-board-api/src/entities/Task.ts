@@ -20,7 +20,7 @@ class Task extends BaseEntity {
 
   @ManyToOne(() => BoardColumn, (column) => column.tasks)
   @IsNotEmpty()
-  column: number;
+  column: string;
 
   constructor({ content, column }: Partial<Task> = {}) {
     super();
