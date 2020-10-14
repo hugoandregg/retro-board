@@ -12,10 +12,3 @@ export const ColumnSeed = [
     title: "Done"
   }
 ];
-
-export const ToDoColumn = [
-  {
-    id: "773183f8-dd90-4954-9855-6b1731d7554b",
-    title: "To Do"
-  }
-]

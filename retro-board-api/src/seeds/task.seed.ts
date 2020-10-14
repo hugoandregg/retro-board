@@ -36,18 +36,3 @@ export const TaskSeed = [
     columnId: "487833ed-7400-4f04-8c8e-de6b50c8137e"
   }
 ]
-
-export const ToDoTasks = [
-  {
-    id: "f445b4a3-b6ab-4297-a46a-ff5f14593708",
-    content: "Better documentation"
-  },
-  {
-    id: "50d23956-b7d5-41db-8b0a-b0bfe61803ab",
-    content: "Investigate why project only works on wsl"
-  },
-  {
-    id: "24b563e0-1a48-4abd-b63e-13b5de608564",
-    content: "API binding to frontend"
-  }
-]

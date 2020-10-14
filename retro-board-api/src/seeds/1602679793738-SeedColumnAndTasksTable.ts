@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, getRepository} from "typeorm";
-import { ColumnSeed,ToDoColumn } from './column.seed'
-import { TaskSeed,ToDoTasks } from './task.seed'
+import { ColumnSeed } from './column.seed'
+import { TaskSeed } from './task.seed'
 import Task from '../entities/Task'
 
 export class SeedColumn1602679793738 implements MigrationInterface {
