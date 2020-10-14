@@ -36,3 +36,4 @@ jobs:
         with:
           message: 'Test on Pull Request'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
