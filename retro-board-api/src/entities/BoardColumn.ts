@@ -12,7 +12,7 @@ import Task from "./Task";
 @Entity()
 class BoardColumn extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column()
   @IsNotEmpty()
