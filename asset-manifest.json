@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/retro-board/static/js/main.89a41a1f.chunk.js",
-    "main.js.map": "/retro-board/static/js/main.89a41a1f.chunk.js.map",
+    "main.js": "/retro-board/static/js/main.fa842df9.chunk.js",
+    "main.js.map": "/retro-board/static/js/main.fa842df9.chunk.js.map",
     "runtime-main.js": "/retro-board/static/js/runtime-main.cecaccae.js",
     "runtime-main.js.map": "/retro-board/static/js/runtime-main.cecaccae.js.map",
     "static/css/2.8da32990.chunk.css": "/retro-board/static/css/2.8da32990.chunk.css",
-    "static/js/2.aa286ddd.chunk.js": "/retro-board/static/js/2.aa286ddd.chunk.js",
-    "static/js/2.aa286ddd.chunk.js.map": "/retro-board/static/js/2.aa286ddd.chunk.js.map",
+    "static/js/2.ef6251b8.chunk.js": "/retro-board/static/js/2.ef6251b8.chunk.js",
+    "static/js/2.ef6251b8.chunk.js.map": "/retro-board/static/js/2.ef6251b8.chunk.js.map",
     "index.html": "/retro-board/index.html",
-    "precache-manifest.ec3df3c6ce2ab2a19a1aed10feff73a6.js": "/retro-board/precache-manifest.ec3df3c6ce2ab2a19a1aed10feff73a6.js",
+    "precache-manifest.2c5d08f565a8a8b2b49524f11c9937ed.js": "/retro-board/precache-manifest.2c5d08f565a8a8b2b49524f11c9937ed.js",
     "service-worker.js": "/retro-board/service-worker.js",
     "static/css/2.8da32990.chunk.css.map": "/retro-board/static/css/2.8da32990.chunk.css.map",
-    "static/js/2.aa286ddd.chunk.js.LICENSE.txt": "/retro-board/static/js/2.aa286ddd.chunk.js.LICENSE.txt"
+    "static/js/2.ef6251b8.chunk.js.LICENSE.txt": "/retro-board/static/js/2.ef6251b8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.cecaccae.js",
     "static/css/2.8da32990.chunk.css",
-    "static/js/2.aa286ddd.chunk.js",
-    "static/js/main.89a41a1f.chunk.js"
+    "static/js/2.ef6251b8.chunk.js",
+    "static/js/main.fa842df9.chunk.js"
   ]
 }

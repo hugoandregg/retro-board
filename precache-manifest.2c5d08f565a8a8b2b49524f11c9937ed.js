@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b398fecc385ecd90cdc635f5fa0a0511",
+    "revision": "f4c279f483d67f44198f15990bf26a32",
     "url": "/retro-board/index.html"
   },
   {
-    "revision": "a885e9f61fa1da18e67b",
+    "revision": "e61c09cdd0ae6b5379ed",
     "url": "/retro-board/static/css/2.8da32990.chunk.css"
   },
   {
-    "revision": "a885e9f61fa1da18e67b",
-    "url": "/retro-board/static/js/2.aa286ddd.chunk.js"
+    "revision": "e61c09cdd0ae6b5379ed",
+    "url": "/retro-board/static/js/2.ef6251b8.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/retro-board/static/js/2.aa286ddd.chunk.js.LICENSE.txt"
+    "url": "/retro-board/static/js/2.ef6251b8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dfab8f73d5f0f6136763",
-    "url": "/retro-board/static/js/main.89a41a1f.chunk.js"
+    "revision": "e61dcbaa2b48a0d5c5e9",
+    "url": "/retro-board/static/js/main.fa842df9.chunk.js"
   },
   {
     "revision": "9f9a5f537f7791c731b9",
