@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import Column from './components/Column/Column';
+import NavBar from "./components/NavBar";
 import { BASE_URL } from './constants';
 
 const Container = styled.div`
@@ -131,14 +132,17 @@ const App = () => {
 	}
 
 	return (
-		<DragDropContext onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
-			<Container>
-				{columns.items.map(column => {
-					const tasks = column.tasks;
-					return <Column key={column.id} column={column} tasks={tasks} />;
-				})}
-			</Container>
-		</DragDropContext>
+		<React.Fragment>
+			<NavBar/>
+			<DragDropContext onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
+				<Container>
+					{columns.items.map(column => {
+						const tasks = column.tasks;
+						return <Column key={column.id} column={column} tasks={tasks} />;
+					})}
+				</Container>
+			</DragDropContext>
+		</React.Fragment>
 	);
 };
 
