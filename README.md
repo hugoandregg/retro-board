@@ -37,6 +37,8 @@ $ cd retro-board-api
 $ yarn && yarn start
 ```
 
+You can access API Docs in http://localhost:8080/api-docs
+
 Seed DB:
 
 ```shell
