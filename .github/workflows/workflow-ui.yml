@@ -34,6 +34,6 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
-          message: 'Test on Pull Request'
+          message: 'Thanks for your PR!'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
