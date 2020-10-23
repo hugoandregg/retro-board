@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Logo, MenuNav, MenuList, MenuItemLink } from './NavBar.styled';
+import { DrawerComponent as Drawer } from '../Drawer'
 
 const NavBar = () => {
     return (
@@ -20,6 +21,7 @@ const NavBar = () => {
                     </MenuItemLink>
                 </MenuList>
             </MenuNav>
+            <Drawer />
         </Container>
     )
 }
