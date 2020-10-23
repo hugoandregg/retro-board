@@ -20,6 +20,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       width: 240,
+      paddingRight: '20px'
     },
     toolbar: {
       position: 'absolute',
@@ -41,13 +42,19 @@ const useStyles = makeStyles((theme) => ({
     drawerInput: {
       margin: '10px',
       paddingLeft: '5px'
+    },
+    drawerItem: {
+      border: '2px solid #eee',
+      borderRadius: '5px',
+      margin: '10px'
     }
   }));
 
 const DrawerComponent = () => {
-    const classes = useStyles();
+  const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const actionItems = ['Improve communication', 'Create a techdebt board', 'Talk with the PO', 'More team outings']
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -69,36 +76,36 @@ const DrawerComponent = () => {
             <MenuIcon />
           </IconButton>
         </Toolbar>
-            <Drawer
-                variant="persistent"
-                anchor="right"
-                open={open}
-                classes={{
-                paper: classes.drawerPaper,
-                }}
-            >
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
-                <h1 className={classes.drawerTitle}>Action Items</h1>
-              </div>
-              <Divider />
-              <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                ))}
-              </List>
-              <Divider />
-              <div className={classes.drawerInputWrapper}>
-                <Input className={classes.drawerInput} placeholder="Insert new action here" />
-                <IconButton color="primary" aria-label="add new action item">
-                  <AddBoxIcon />
-                </IconButton>
-              </div>
-            </Drawer>
+        <Drawer
+            variant="persistent"
+            anchor="right"
+            open={open}
+            classes={{
+            paper: classes.drawerPaper,
+            }}
+        >
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+            <h1 className={classes.drawerTitle}>Action Items</h1>
+          </div>
+          <Divider />
+          <List>
+            {actionItems.map((text) => (
+              <ListItem className={classes.drawerItem}>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <div className={classes.drawerInputWrapper}>
+            <Input className={classes.drawerInput} placeholder="Insert new action here" />
+            <IconButton color="primary" aria-label="add new action item">
+              <AddBoxIcon />
+            </IconButton>
+          </div>
+        </Drawer>
         </>
     )
 }
