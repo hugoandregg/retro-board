@@ -9,10 +9,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { Input } from '@material-ui/core';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import Button from '@material-ui/core/Button';
+
+
+// import Input from './Input'
 
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
@@ -22,6 +25,22 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       right: 0,
       top: -5
+    },
+    drawerHeader: {
+      display: 'flex'
+    },
+    drawerTitle: {
+      marginTop: '10px',
+      fontSize: '1.5rem'
+    },
+    drawerInputWrapper: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    drawerInput: {
+      margin: '10px',
+      paddingLeft: '5px'
     }
   }));
 
@@ -58,29 +77,27 @@ const DrawerComponent = () => {
                 paper: classes.drawerPaper,
                 }}
             >
-              <div>
+              <div className={classes.drawerHeader}>
                 <IconButton onClick={handleDrawerClose}>
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
+                <h1 className={classes.drawerTitle}>Action Items</h1>
               </div>
               <Divider />
               <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItem button key={text}>
                     <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-                </List>
-                <Divider />
-                <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                    </ListItem>
+                  </ListItem>
                 ))}
               </List>
+              <Divider />
+              <div className={classes.drawerInputWrapper}>
+                <Input className={classes.drawerInput} placeholder="Insert new action here" />
+                <IconButton color="primary" aria-label="add new action item">
+                  <AddBoxIcon />
+                </IconButton>
+              </div>
             </Drawer>
         </>
     )
