@@ -64,4 +64,27 @@ router.post("/", Validators.validateTask, TaskController.add);
  */
 router.get("/", TaskController.getAll);
 
+/**
+ * @swagger
+ * /task:
+ *   delete:
+ *     tags:
+ *        - Task
+ *     description: Delete a task
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: uuid
+ *         description: Task id
+ *         in: path
+ *         type: string
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Task deleted
+ *       404:
+ *         description: Task not found
+ */
+router.delete("/:uuid", TaskController.delete);
+
 export default router;

@@ -17,6 +17,12 @@ const ColumnController = {
     const tasks = await getRepository(Task).find({});
     response.status(200).json(tasks);
   },
+
+  delete: async (request: Request, response: Response) => {
+    const uuid = request.params.uuid;
+    const result = await getRepository(Task).delete({ id: uuid })
+    response.status(200).json(result)
+  },
 };
 
 export default ColumnController;
