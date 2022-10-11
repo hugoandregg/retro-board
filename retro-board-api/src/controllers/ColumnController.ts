@@ -29,8 +29,13 @@ const ColumnController = {
     const column = await getRepository(BoardColumn).findOne({ where: { id: uuid }, relations: ["tasks"] } );
     if (!column) return response.status(404).json({ message: "Column Not Found" });
     return response.status(200).json(column.tasks);
-  }
+  },
 
+  delete: async (request: Request, response: Response) => {
+    const uuid = request.params.uuid;
+    const result = await getRepository(BoardColumn).delete({ id: uuid })
+    return response.status(200).json(result)
+  }
 };
 
 export default ColumnController;
