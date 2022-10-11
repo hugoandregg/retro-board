@@ -87,4 +87,25 @@ router.get("/", ColumnController.getAll);
  */
 router.get("/:uuid", Validators.validateUUID, ColumnController.getTasks);
 
+/**
+ * @swagger
+ * /task:
+ *   delete:
+ *     tags:
+ *        - Task
+ *     description: Delete a column
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: uuid
+ *         description: Task id
+ *         in: path
+ *         type: string
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Description of how many row affected
+ */
+router.delete("/:uuid", Validators.validateUUID, ColumnController.delete);
+
 export default router;
