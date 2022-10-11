@@ -1,0 +1,4 @@
+- Pick an issue that's not assigned to anyone and ask to work on it, so you'll be assigned.
+- Make sure to add tests whenever it's possible.
+- Use this commit pattern: [#ISSUE_NUMBER] Your commit message, example: [#7] Add docker-compose to start postgres
+- Have fun! :)
