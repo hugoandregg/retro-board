@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import Column from './components/Column/Column';
-import NavBar from "./components/NavBar";
+import NavBar from './components/NavBar';
 import { BASE_URL } from './constants';
+import { Typography } from '@material-ui/core';
 
 const Container = styled.div`
 	display: flex;
@@ -133,15 +134,21 @@ const App = () => {
 
 	return (
 		<React.Fragment>
-			<NavBar/>
-			<DragDropContext onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
+			<NavBar />
+			{columns && columns?.items?.length > 0 ? (
+				<DragDropContext onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
+					<Container>
+						{columns.items.map(column => {
+							const tasks = column.tasks;
+							return <Column key={column.id} column={column} tasks={tasks} />;
+						})}
+					</Container>
+				</DragDropContext>
+			) : (
 				<Container>
-					{columns.items.map(column => {
-						const tasks = column.tasks;
-						return <Column key={column.id} column={column} tasks={tasks} />;
-					})}
+					<Typography component="h4">Oops, there's nothing here :( </Typography>
 				</Container>
-			</DragDropContext>
+			)}
 		</React.Fragment>
 	);
 };
