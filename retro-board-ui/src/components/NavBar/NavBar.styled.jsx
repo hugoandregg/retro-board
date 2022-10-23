@@ -1,9 +1,8 @@
-import MuiContainer from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 
-export const Container = styled(MuiContainer)(() => ({
+export const Container = styled('div')(() => ({
 	display: 'flex',
 	alignItems: 'center',
 	padding: '0 16px',
