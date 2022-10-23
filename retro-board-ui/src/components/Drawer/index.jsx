@@ -1,20 +1,20 @@
-import React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import { Input } from '@mui/material';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import { styled } from '@mui/material/styles';
+import React from 'react'
+import { useTheme } from '@mui/material/styles'
+import Drawer from '@mui/material/Drawer'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import { Input } from '@mui/material'
+import AddBoxIcon from '@mui/icons-material/AddBox'
+import { styled } from '@mui/material/styles'
 
-const PREFIX = 'DrawerComponent';
+const PREFIX = 'DrawerComponent'
 const classes = {
 	root: `${PREFIX}-root`,
 	drawerPaper: `${PREFIX}-drawerPaper`,
@@ -24,7 +24,7 @@ const classes = {
 	drawerInputWrapper: `${PREFIX}-drawerInputWrapper`,
 	drawerInput: `${PREFIX}-drawerInput`,
 	drawerItem: `${PREFIX}-drawerItem`
-};
+}
 const Root = styled('div')(({ theme }) => ({
 	[`& .${classes.drawerPaper}`]: {
 		width: 240,
@@ -56,25 +56,25 @@ const Root = styled('div')(({ theme }) => ({
 		borderRadius: '5px',
 		margin: '10px'
 	}
-}));
+}))
 
 const DrawerComponent = () => {
-	const theme = useTheme();
-	const [open, setOpen] = React.useState(false);
+	const theme = useTheme()
+	const [open, setOpen] = React.useState(false)
 	const actionItems = [
 		'Improve communication',
 		'Create a techdebt board',
 		'Talk with the PO',
 		'More team outings'
-	];
+	]
 
 	const handleDrawerOpen = () => {
-		setOpen(true);
-	};
+		setOpen(true)
+	}
 
 	const handleDrawerClose = () => {
-		setOpen(false);
-	};
+		setOpen(false)
+	}
 
 	return (
 		<Root className={classes.root}>
@@ -126,7 +126,7 @@ const DrawerComponent = () => {
 				</div>
 			</Drawer>
 		</Root>
-	);
-};
+	)
+}
 
-export default DrawerComponent;
+export default DrawerComponent

@@ -1,9 +1,9 @@
-import express from "express";
+import express from 'express'
 
-import ColumnController from "../controllers/ColumnController";
-import Validators from "../middlewares/validators";
+import ColumnController from '../controllers/ColumnController'
+import Validators from '../middlewares/validators'
 
-const router = express.Router();
+const router = express.Router()
 
 /**
  * @swagger
@@ -44,7 +44,7 @@ const router = express.Router();
  *       200:
  *         description: New column
  */
-router.post("/", Validators.validateColumn, ColumnController.add);
+router.post('/', Validators.validateColumn, ColumnController.add)
 
 /**
  * @swagger
@@ -63,7 +63,7 @@ router.post("/", Validators.validateColumn, ColumnController.add);
  *       200:
  *         description: Columns
  */
-router.get("/", ColumnController.getAll);
+router.get('/', ColumnController.getAll)
 
 /**
  * @swagger
@@ -75,7 +75,7 @@ router.get("/", ColumnController.getAll);
  *       - application/json
  *     parameters:
  *       - name: uuid
- *         description: Column id 
+ *         description: Column id
  *         in: path
  *         type: string
  *         required: true
@@ -85,7 +85,7 @@ router.get("/", ColumnController.getAll);
  *       404:
  *         description: Column not found
  */
-router.get("/:uuid", Validators.validateUUID, ColumnController.getTasks);
+router.get('/:uuid', Validators.validateUUID, ColumnController.getTasks)
 
 /**
  * @swagger
@@ -106,6 +106,6 @@ router.get("/:uuid", Validators.validateUUID, ColumnController.getTasks);
  *       200:
  *         description: Description of how many row affected
  */
-router.delete("/:uuid", Validators.validateUUID, ColumnController.delete);
+router.delete('/:uuid', Validators.validateUUID, ColumnController.delete)
 
-export default router;
+export default router

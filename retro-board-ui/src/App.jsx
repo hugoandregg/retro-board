@@ -1,110 +1,110 @@
-import '@atlaskit/css-reset';
-import React, { useEffect, useState } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
-import Column from './components/Column/Column';
-import NavBar from './components/NavBar';
-import { BASE_URL } from './constants';
-import MuiContainer from '@mui/material/Container';
-import { styled } from '@mui/material/styles';
-import { Alert } from '@mui/material';
+import '@atlaskit/css-reset'
+import React, { useEffect, useState } from 'react'
+import { DragDropContext } from 'react-beautiful-dnd'
+import Column from './components/Column/Column'
+import NavBar from './components/NavBar'
+import { BASE_URL } from './constants'
+import MuiContainer from '@mui/material/Container'
+import { styled } from '@mui/material/styles'
+import { Alert } from '@mui/material'
 
 export const Container = styled(MuiContainer)(() => ({
 	display: 'flex',
 	flexWrap: 'wrap'
-}));
+}))
 
 const App = () => {
-	const [columns, setColumns] = useState({ state: 'pending' });
+	const [columns, setColumns] = useState({ state: 'pending' })
 
 	useEffect(() => {
-		getColumns();
-	}, []);
+		getColumns()
+	}, [])
 
 	const getColumns = (showTasks = true) => {
-		let params = `?`;
+		let params = `?`
 
 		if (showTasks) {
-			params += `withTask=true`;
+			params += `withTask=true`
 		}
 
 		fetch(`${BASE_URL}/column${params}`)
 			.then(response => response.json())
 			.then(value => setColumns({ state: 'resolved', items: value }))
-			.catch(error => setColumns({ state: 'rejected', error }));
-	};
+			.catch(error => setColumns({ state: 'rejected', error }))
+	}
 
 	const changeTasksFromColumns = (start, source, finish, destination) => {
-		const task = start.tasks[source.index];
+		const task = start.tasks[source.index]
 
-		const newStart = [...start.tasks];
-		newStart.splice(source.index, 1);
+		const newStart = [...start.tasks]
+		newStart.splice(source.index, 1)
 
-		const newFinish = [...finish.tasks];
-		newFinish.splice(destination.index, 0, task);
+		const newFinish = [...finish.tasks]
+		newFinish.splice(destination.index, 0, task)
 
 		const newState = columns.items.map(column => {
 			if (column.id === source.droppableId) {
-				column.tasks = newStart;
+				column.tasks = newStart
 			} else if (column.id === destination.droppableId) {
-				column.tasks = newFinish;
+				column.tasks = newFinish
 			}
 
-			return column;
-		});
+			return column
+		})
 
-		setColumns({ state: 'resolved', items: newState });
-	};
+		setColumns({ state: 'resolved', items: newState })
+	}
 
 	const reorderTasks = (start, source, startIndex, destination) => {
-		const task = start.tasks[source.index];
+		const task = start.tasks[source.index]
 
-		const newStart = [...start.tasks];
-		newStart.splice(source.index, 1);
-		newStart.splice(destination.index, 0, task);
+		const newStart = [...start.tasks]
+		newStart.splice(source.index, 1)
+		newStart.splice(destination.index, 0, task)
 
 		const data = {
 			...columns,
 			items: [...columns.items]
-		};
-		data.items[startIndex].tasks = newStart;
+		}
+		data.items[startIndex].tasks = newStart
 
-		setColumns({ state: 'resolved', items: data.items });
-	};
+		setColumns({ state: 'resolved', items: data.items })
+	}
 
 	const getItemByDroppableId = droppableId =>
-		columns.items.find(column => column.id === droppableId);
+		columns.items.find(column => column.id === droppableId)
 	const getItemIndexByDroppableId = droppableId =>
-		columns.items.findIndex(column => column.id === droppableId);
+		columns.items.findIndex(column => column.id === droppableId)
 
 	const onDragUpdate = update => {
-		const { destination } = update;
+		const { destination } = update
 
-		let opacity = 0;
+		let opacity = 0
 
 		if (destination) {
-			const index = getItemIndexByDroppableId(destination.droppableId);
-			opacity = destination.index / columns.items[index].tasks.length;
+			const index = getItemIndexByDroppableId(destination.droppableId)
+			opacity = destination.index / columns.items[index].tasks.length
 		}
 
-		document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
-	};
+		document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`
+	}
 
 	const onDragEnd = result => {
-		document.body.style.color = 'inherit';
-		document.body.style.backgroundColor = 'inherit';
-		const { destination, source } = result;
+		document.body.style.color = 'inherit'
+		document.body.style.backgroundColor = 'inherit'
+		const { destination, source } = result
 
-		if (!destination) return;
+		if (!destination) return
 
 		if (
 			destination.droppableId === source.droppableId &&
 			destination.index === source.index
 		) {
-			return;
+			return
 		}
 
-		const start = getItemByDroppableId(source.droppableId);
-		const finish = getItemByDroppableId(destination.droppableId);
+		const start = getItemByDroppableId(source.droppableId)
+		const finish = getItemByDroppableId(destination.droppableId)
 
 		// BEHAVIOUR: Re-order items inside the same column
 		if (start === finish) {
@@ -113,16 +113,16 @@ const App = () => {
 				source,
 				getItemIndexByDroppableId(source.droppableId),
 				destination
-			);
-			return;
+			)
+			return
 		}
 
 		// BEHAVIOUR: Moving from one list to another
-		changeTasksFromColumns(start, source, finish, destination);
-	};
+		changeTasksFromColumns(start, source, finish, destination)
+	}
 
 	if (columns.state === 'pending') {
-		return <div>Loading...</div>;
+		return <div>Loading...</div>
 	}
 
 	if (columns.state === 'rejected') {
@@ -130,7 +130,7 @@ const App = () => {
 			<div>
 				Error: <pre>{JSON.stringify(columns.error, null, 2)}</pre>
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -140,8 +140,8 @@ const App = () => {
 				<DragDropContext onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
 					<Container>
 						{columns.items.map(column => {
-							const tasks = column.tasks;
-							return <Column key={column.id} column={column} tasks={tasks} />;
+							const tasks = column.tasks
+							return <Column key={column.id} column={column} tasks={tasks} />
 						})}
 					</Container>
 				</DragDropContext>
@@ -151,7 +151,7 @@ const App = () => {
 				</MuiContainer>
 			)}
 		</React.Fragment>
-	);
-};
+	)
+}
 
-export default App;
+export default App
