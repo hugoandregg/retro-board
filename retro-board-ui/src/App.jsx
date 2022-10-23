@@ -1,16 +1,17 @@
 import '@atlaskit/css-reset';
 import React, { useEffect, useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import styled from 'styled-components';
 import Column from './components/Column/Column';
 import NavBar from './components/NavBar';
 import { BASE_URL } from './constants';
-import { Typography } from '@material-ui/core';
+import MuiContainer from '@mui/material/Container';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
-const Container = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-`;
+export const Container = styled(MuiContainer)(() => ({
+	display: 'flex',
+	flexWrap: 'wrap'
+}));
 
 const App = () => {
 	const [columns, setColumns] = useState({ state: 'pending' });

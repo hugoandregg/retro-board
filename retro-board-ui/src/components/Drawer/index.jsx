@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -12,36 +12,46 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Input } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import { styled } from '@mui/material/styles';
 
-// import Input from './Input'
-
-const useStyles = makeStyles(theme => ({
-	drawerPaper: {
+const PREFIX = 'DrawerComponent';
+const classes = {
+	root: `${PREFIX}-root`,
+	drawerPaper: `${PREFIX}-drawerPaper`,
+	toolbar: `${PREFIX}-toolbar`,
+	drawerHeader: `${PREFIX}-drawerHeader`,
+	drawerTitle: `${PREFIX}-drawerTitle`,
+	drawerInputWrapper: `${PREFIX}-drawerInputWrapper`,
+	drawerInput: `${PREFIX}-drawerInput`,
+	drawerItem: `${PREFIX}-drawerItem`
+};
+const Root = styled('div')(({ theme }) => ({
+	[`& .${classes.drawerPaper}`]: {
 		width: 240,
 		paddingRight: '20px'
 	},
-	toolbar: {
+	[`& .${classes.toolbar}`]: {
 		position: 'absolute',
 		right: 0,
 		top: -5
 	},
-	drawerHeader: {
+	[`& .${classes.drawerHeader}`]: {
 		display: 'flex'
 	},
-	drawerTitle: {
+	[`& .${classes.drawerTitle}`]: {
 		marginTop: '10px',
 		fontSize: '1.5rem'
 	},
-	drawerInputWrapper: {
+	[`& .${classes.drawerInputWrapper}`]: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
-	drawerInput: {
+	[`& .${classes.drawerInput}`]: {
 		margin: '10px',
 		paddingLeft: '5px'
 	},
-	drawerItem: {
+	[`& .${classes.drawerItem}`]: {
 		border: '2px solid #eee',
 		borderRadius: '5px',
 		margin: '10px'
@@ -49,7 +59,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DrawerComponent = () => {
-	const classes = useStyles();
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 	const actionItems = [
@@ -68,7 +77,7 @@ const DrawerComponent = () => {
 	};
 
 	return (
-		<>
+		<Root className={classes.root}>
 			<Toolbar className={classes.toolbar}>
 				<IconButton
 					color="inherit"
@@ -116,7 +125,7 @@ const DrawerComponent = () => {
 					</IconButton>
 				</div>
 			</Drawer>
-		</>
+		</Root>
 	);
 };
 
