@@ -1,27 +1,27 @@
-import React from 'react';
-import { IconButton, Popover } from '@mui/material';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
+import React from 'react'
+import { IconButton, Popover } from '@mui/material'
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 const EmojiPicker = props => {
-	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = React.useState(null)
 
 	const handleClick = event => {
-		setAnchorEl(event.currentTarget);
-	};
+		setAnchorEl(event.currentTarget)
+	}
 
 	const handleClose = () => {
-		setAnchorEl(null);
-	};
+		setAnchorEl(null)
+	}
 
 	const handleSelection = event => {
-		props.onEmojiSelect(event);
-		handleClose();
-	};
+		props.onEmojiSelect(event)
+		handleClose()
+	}
 
-	const open = Boolean(anchorEl);
-	const id = open ? 'emoji-popover' : undefined;
+	const open = Boolean(anchorEl)
+	const id = open ? 'emoji-popover' : undefined
 
 	return (
 		<div>
@@ -53,7 +53,7 @@ const EmojiPicker = props => {
 				<Picker data={data} onSelect={handleSelection} />
 			</Popover>
 		</div>
-	);
-};
+	)
+}
 
-export default EmojiPicker;
+export default EmojiPicker

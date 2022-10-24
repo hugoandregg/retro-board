@@ -1,9 +1,8 @@
-import express from "express";
-import TaskController from "../controllers/TaskController";
-import Validators from "../middlewares/validators";
+import express from 'express'
+import TaskController from '../controllers/TaskController'
+import Validators from '../middlewares/validators'
 
-
-const router = express.Router();
+const router = express.Router()
 
 /**
  * @swagger
@@ -47,7 +46,7 @@ const router = express.Router();
  *       200:
  *         description: New task
  */
-router.post("/", Validators.validateTask, TaskController.add);
+router.post('/', Validators.validateTask, TaskController.add)
 
 /**
  * @swagger
@@ -62,7 +61,7 @@ router.post("/", Validators.validateTask, TaskController.add);
  *       200:
  *         description: All tasks
  */
-router.get("/", TaskController.getAll);
+router.get('/', TaskController.getAll)
 
 /**
  * @swagger
@@ -85,6 +84,6 @@ router.get("/", TaskController.getAll);
  *       404:
  *         description: Task not found
  */
-router.delete("/:uuid", TaskController.delete);
+router.delete('/:uuid', TaskController.delete)
 
-export default router;
+export default router

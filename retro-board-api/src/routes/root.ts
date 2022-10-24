@@ -1,6 +1,6 @@
-import express, { Response } from "express";
+import express, { Response } from 'express'
 
-const router = express.Router();
+const router = express.Router()
 
 /**
  * @swagger
@@ -21,8 +21,8 @@ const router = express.Router();
  *       200:
  *         description: Hello world
  */
-router.get("/", (_, response: Response) => {
-  response.send("Hello world!");
-});
+router.get('/', (_, response: Response) => {
+	response.send('Hello world!')
+})
 
-export default router;
+export default router

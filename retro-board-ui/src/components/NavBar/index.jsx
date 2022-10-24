@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 import {
 	Container,
 	Logo,
 	MenuNav,
 	MenuList,
 	MenuItemLink
-} from './NavBar.styled';
-import DrawerComponent from '../Drawer';
-import MuiContainer from '@mui/material/Container';
+} from './NavBar.styled'
+import DrawerComponent from '../Drawer'
+import MuiContainer from '@mui/material/Container'
 
 const NavBar = () => {
 	return (
@@ -30,7 +30,7 @@ const NavBar = () => {
 				<DrawerComponent />
 			</MuiContainer>
 		</Container>
-	);
-};
+	)
+}
 
-export default NavBar;
+export default NavBar

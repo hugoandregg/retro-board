@@ -1,5 +1,5 @@
-import MuiContainer from '@mui/material/Container';
-import { styled } from '@mui/material/styles';
+import MuiContainer from '@mui/material/Container'
+import { styled } from '@mui/material/styles'
 
 export const Container = styled(MuiContainer)(props => ({
 	border: '1px solid lightgrey',
@@ -7,8 +7,8 @@ export const Container = styled(MuiContainer)(props => ({
 	padding: '8px',
 	marginBottom: '8px',
 	backgroundColor: props.isDragging ? 'lightgreen' : 'white'
-}));
+}))
 
 export const ReactionContainer = styled(MuiContainer)(() => ({
 	marginRight: '4px'
-}));
+}))
