@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 import { BASE_URL } from './constants';
 import MuiContainer from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import { Alert } from '@mui/material';
 
 export const Container = styled(MuiContainer)(() => ({
 	display: 'flex',
@@ -146,9 +146,9 @@ const App = () => {
 					</Container>
 				</DragDropContext>
 			) : (
-				<Container>
-					<Typography component="h4">Oops, there's nothing here :( </Typography>
-				</Container>
+				<MuiContainer style={{ marginTop: '20px' }}>
+					<Alert severity="warning">Oops, there's nothing here yet! :( </Alert>
+				</MuiContainer>
 			)}
 		</React.Fragment>
 	);
